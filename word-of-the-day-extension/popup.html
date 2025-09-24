@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>WOTD</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="tabs">
+      <button class="tab active" id="tab-wotd">WOTD</button>
+      <button class="tab" id="tab-all">All</button>
+    </div>
+    <div class="right">
+      <select id="sourceSel" title="Source">
+        <option value="dictionary.com">Dictionary.com</option>
+        <option value="oxford">Oxford</option>
+        <option value="merriam-webster">Merriam-Webster</option>
+        <option value="awad">A.Word.A.Day</option>
+        <option value="nyt">NYT</option>
+        <option value="wordnik">Wordnik</option>
+        <option value="vocabulary">Vocabulary.com</option>
+      </select>
+      <button id="refresh" title="Refresh">⟳</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-wotd">
+      <div id="content"><div class="loading">Loading...</div></div>
+    </section>
+
+    <section id="view-all" hidden>
+      <div id="list" class="list"><div class="loading">Loading...</div></div>
+    </section>
+  </main>
+
+  <footer id="footer-wotd">
+    <a id="sourceLink" href="#" target="_blank" rel="noreferrer noopener">Open Source</a>
+    <a href="options.html" target="_blank">Options</a>
+    <!-- ▼ 追加：任意日取得用のコントロール -->
+  <div class="date-controls" style="display:flex; gap:6px; align-items:center;">
+  <input type="date" id="datePick" />
+  <button id="dateGo" title="Fetch by date">Go</button>
+  <button id="dateToday" title="Back to today">Today</button>
+  </div>
+<!-- ▲ 追加ここまで -->
+
+  </footer>
+
+  <!-- 単一ファイルで完結。外部 import は使いません -->
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

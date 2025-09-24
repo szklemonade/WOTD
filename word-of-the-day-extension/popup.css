@@ -1,0 +1,84 @@
+* { box-sizing: border-box; }
+body { margin: 0; font: 13px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; width: 360px; color: #111827; }
+
+header { display:flex; align-items:center; justify-content:space-between; padding:8px; border-bottom:1px solid #e5e7eb; background:#f9fafb; }
+.tabs { display:flex; gap:6px; }
+.tab { border:1px solid #e5e7eb; background:#fff; padding:6px 10px; border-radius:8px; cursor:pointer; }
+.tab.active { background:#111827; color:#fff; border-color:#111827; }
+.right { display:flex; align-items:center; gap:6px; }
+select { padding:6px; border-radius:8px; border:1px solid #e5e7eb; background:#fff; }
+
+main { padding:12px; }
+.loading { color:#6b7280; }
+.error { color:#b91c1c; white-space:pre-wrap; }
+.word { font-size:22px; font-weight:700; margin-bottom:6px; }
+.pron { color:#6b7280; margin-bottom:6px; }
+.block { margin:6px 0; white-space:pre-wrap; }
+
+footer { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; border-top:1px solid #e5e7eb; background:#f9fafb; }
+
+.list { display:grid; gap:10px; }
+.card { border:1px solid #e5e7eb; border-radius:12px; padding:10px; background:#fff; }
+.card h3 { margin:0 0 4px; font-size:16px; }
+.card .meta { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.card .actions { display:flex; gap:8px; }
+.card button { padding:4px 8px; border:1px solid #e5e7eb; border-radius:8px; background:#111827; color:#fff; cursor:pointer; }
+.card a { text-decoration:none; }
+
+
+/* ---- All タブのカードボード（タイル） ---- */
+#view-all #list.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* 220〜 のカードを敷き詰め */
+  gap: 12px;
+  align-items: start;
+}
+
+/* カードを“高さ揃え風”にしてフッターを底に吸着 */
+#view-all #list.cards-grid .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 12px;            /* お好みで */
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+#view-all #list.cards-grid .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+/* 本文ブロックは伸縮可。下部メタを底に寄せる */
+#view-all #list.cards-grid .card .block {
+  flex: 1 1 auto;
+}
+#view-all #list.cards-grid .card .meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ＝ All タブのカードボードを全文表示にする ＝ */
+#view-all #list.cards-grid .card .block {
+  display: block;            /* 行数制限用の -webkit-box をやめる */
+  white-space: pre-wrap;     /* \n をそのまま表示（• の改行が生きる） */
+  overflow: visible;         /* 余計な切り捨てなし */
+  max-height: none;          /* 高さ制限なし */
+  word-break: break-word;    /* 長い単語がはみ出さないように */
+}
+
+/* 以前の省略表示ルールが残っている場合の“上書き”用（必要なら） */
+#view-all #list.cards-grid .card .block {
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+}
+
+
+/* レスポンシブ微調整 */
+@media (max-width: 360px) {
+  #view-all #list.cards-grid {
+    grid-template-columns: 1fr;   /* 極小幅では1列 */
+  }
+}

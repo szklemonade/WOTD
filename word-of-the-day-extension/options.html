@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>WOTD Options</title>
+  <style>
+    body { font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; padding: 16px; }
+    .field { margin-bottom: 12px; }
+    label { display:block; margin-bottom: 6px; font-weight: 600; }
+    input[type="text"], input[type="password"], select { width: 360px; padding: 6px; }
+    small { color:#6b7280; display:block; margin-top:4px; }
+    #status { color:#6b7280; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <h1>Word of the Day – Options</h1>
+
+  <div class="field">
+    <label for="source">Default source</label>
+    <select id="source">
+      <option value="dictionary.com">Dictionary.com</option>
+      <option value="oxford">Oxford</option>
+      <option value="merriam-webster">Merriam-Webster</option>
+      <option value="awad">A.Word.A.Day</option>
+      <option value="nyt">NYT</option>
+      <option value="wordnik">Wordnik</option>
+      <option value="wordspy">WordSpy</option>
+      <option value="vocabulary">Vocabulary.com</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="wordnikKey">Wordnik API key</label>
+    <input id="wordnikKey" type="password" placeholder="Your Wordnik API key" autocomplete="off" />
+    <small>Wordnik の WotD 取得に使用します。</small>
+  </div>
+
+  <div class="field">
+    <label><input id="wordleUseWOTD" type="checkbox" /> Use WOTD as Wordle helper</label>
+    <small>（ある場合のみの設定。無ければ無視）</small>
+  </div>
+
+  <div class="field">
+    <label for="oxfordKey">Oxford API key</label>
+    <input id="oxfordKey" type="password" placeholder="X-API-Key" autocomplete="off" />
+    <small>Oxford Learner’s Dictionaries の WOTD API 用。未設定でも試行し、401/403 のときだけ必須。</small>
+  </div>
+
+  <button id="save">Save</button>
+  <div id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

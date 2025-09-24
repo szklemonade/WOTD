@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "WOTD",
+  "version": "1.0.0",
+  "permissions": ["storage"],
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+
+  "background": { "service_worker": "service_worker.js" }, 
+  "action": { "default_popup": "popup.html" },
+
+  "host_permissions": [
+    "https://www.vocabulary.com/*",
+    "https://www.oxfordlearnersdictionaries.com/*",
+    "https://api.wordnik.com/*",
+    "https://www.dictionary.com/*",
+    "https://www.merriam-webster.com/*",
+    "https://wordsmith.org/*",
+    "https://www.nytimes.com/*",
+    "https://wordspy.com/*",
+    "https://dictionary.cambridge.org/*"
+  ]
+}
